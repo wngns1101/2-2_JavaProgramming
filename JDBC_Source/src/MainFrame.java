@@ -9,14 +9,13 @@
  */
 public class MainFrame extends javax.swing.JFrame {
     DB_MAN DBM = new DB_MAN();
-    String strSQL = "Select * From Car";
+    String strSQL = "Select * From Carinfo";
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
         initComponents();
         try{
-            String strData = null;
             DBM.dbOpen();
             getDBData(strSQL);
             DBM.dbClose();
@@ -49,22 +48,22 @@ public class MainFrame extends javax.swing.JFrame {
     public String makeSQLWhere(String strQuery){
         switch (cboSearch.getSelectedIndex()) {
             case 0:
-                strQuery += " WHERE Car.No = '" + txtNo.getText() + "'";
+                strQuery += " WHERE Carinfo.No = '" + txtNo.getText() + "'";
                 break;
             case 1:
-                strQuery += " WHERE Car.Type = '" + txtCarType.getText() + "'";
+                strQuery += " WHERE Carinfo.Type = '" + txtCarType.getText() + "'";
                 break;
             case 2:
-                strQuery += " WHERE Car.Displacement = '" + txtCC.getText() + "'";
+                strQuery += " WHERE Carinfo.Displacement = '" + txtCC.getText() + "'";
                 break;
             case 3:
-                strQuery += " WHERE Car.Performance = '" + txtKM.getText() + "'";
+                strQuery += " WHERE Carinfo.Performance = '" + txtKM.getText() + "'";
                 break;
             case 4:
-                strQuery += " WHERE Car.Price = '" + txtPrice.getText() + "'";
+                strQuery += " WHERE Carinfo.Price = '" + txtPrice.getText() + "'";
                 break;
             default:
-                strQuery = "SELECT * FROM Car";
+                strQuery = "SELECT * FROM Carinfo";
                 break;
         }
         return strQuery;
@@ -121,7 +120,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         lblSearch.setText("검색기준");
 
-        txtSQL.setText("SELECT * FROM Car");
+        txtSQL.setText("SELECT * FROM Carinfo");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -271,7 +270,7 @@ public class MainFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectActionPerformed
-        strSQL = "Select * From Car";
+        strSQL = "Select * From Carinfo";
         strSQL = makeSQLWhere(strSQL);
         
         try {
@@ -292,7 +291,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSelectActionPerformed
 
     private void btnInsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertActionPerformed
-        strSQL = "Insert Into Car Values (";
+        strSQL = "Insert Into Carinfo Values (";
         strSQL += "'" + txtNo.getText() + "',";
         strSQL += "'" + txtCarType.getText() + "',";
         strSQL += "'" + txtCC.getText() + "',";
@@ -301,7 +300,7 @@ public class MainFrame extends javax.swing.JFrame {
         try{
             DBM.dbOpen();
             DBM.DB_stmt.executeUpdate(strSQL);
-            strSQL = "Select * From Car";
+            strSQL = "Select * From Carinfo";
             getDBData(strSQL);
             DBM.dbClose();
         }catch(Exception e){
@@ -310,7 +309,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInsertActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        strSQL = "Update Car Set";
+        strSQL = "Update Carinfo Set";
         strSQL += "Type = '" + "'" + txtCarType.getText() + "',";
         strSQL += "Displacement = '" + "'" + txtCC.getText() + "',";
         strSQL += "Performance = '" + "'" + txtKM.getText() + "',";
@@ -319,7 +318,7 @@ public class MainFrame extends javax.swing.JFrame {
         try{
             DBM.dbOpen();
             DBM.DB_stmt.executeUpdate(strSQL);
-            strSQL = "Select * From Car";
+            strSQL = "Select * From Carinfo";
             getDBData(strSQL);
             DBM.dbClose();
         }catch(Exception e){
@@ -328,13 +327,13 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        strSQL = "Delete From Car";
+        strSQL = "Delete From Carinfo";
         strSQL = makeSQLWhere(strSQL);
         
         try{
             DBM.dbOpen();
             DBM.DB_stmt.executeUpdate(strSQL);
-            strSQL = "Select * From Car";
+            strSQL = "Select * From Carinfo";
             getDBData(strSQL);
             DBM.dbClose();
         }catch(Exception e){
@@ -347,7 +346,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnExecuteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExecuteActionPerformed
-        String strData = "Select * From Car";
+        String strData = "Select * From Carinfo";
         strSQL = txtSQL.getText();
         strData = strSQL.toUpperCase();
         try {
