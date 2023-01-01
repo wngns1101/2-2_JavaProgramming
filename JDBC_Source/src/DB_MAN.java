@@ -13,7 +13,7 @@ import java.io.*;
 public class DB_MAN {
 
 String strDriver = "com.mysql.jdbc.Driver";
-String strURL = "jdbc:mysql://127.0.0.1:3306/mydb?characterEncoding=UTF-8&serverTimezone=UTC";
+String strURL = "jdbc:mysql://localhost:3306/mydb?characterEncoding=UTF-8&serverTimezone=UTC";
 String strUser = "root";
 String strPWD = "Wkrwjs4602!";
 

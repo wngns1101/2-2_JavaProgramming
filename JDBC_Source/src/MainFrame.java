@@ -48,7 +48,7 @@ public class MainFrame extends javax.swing.JFrame {
     public String makeSQLWhere(String strQuery){
         switch (cboSearch.getSelectedIndex()) {
             case 0:
-                strQuery += " WHERE Carinfo.No = '" + txtNo.getText() + "'";
+                strQuery += " WHERE Carinfo.No = '" + txtNo.getText() + "';";
                 break;
             case 1:
                 strQuery += " WHERE Carinfo.Type = '" + txtCarType.getText() + "'";
@@ -182,7 +182,6 @@ public class MainFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txtCarType, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtKM, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtPrice, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(txtSQL, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -205,16 +204,18 @@ public class MainFrame extends javax.swing.JFrame {
                                         .addComponent(lblTitle)
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(lblNo)
-                                            .addGap(18, 18, 18)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addComponent(txtNo, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(68, 68, 68)
+                                            .addGap(80, 80, 80)
                                             .addComponent(lblSearch)))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(cboSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(lblCarType)
-                                    .addGap(327, 327, 327))
+                                    .addGap(12, 12, 12)
+                                    .addComponent(txtCarType, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(txtCC, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(6, 6, 6)))
@@ -310,10 +311,10 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         strSQL = "Update Carinfo Set";
-        strSQL += "Type = '" + "'" + txtCarType.getText() + "',";
-        strSQL += "Displacement = '" + "'" + txtCC.getText() + "',";
-        strSQL += "Performance = '" + "'" + txtKM.getText() + "',";
-        strSQL += "Price = '" + "'" + txtPrice.getText() + "',";
+        strSQL += " Type = '"  + txtCarType.getText() + "',";
+        strSQL += " Displacement = '" + txtCC.getText() + "',";
+        strSQL += " Performance = '" + txtKM.getText() + "',";
+        strSQL += " Price = '" + txtPrice.getText() + "'";
         strSQL = makeSQLWhere(strSQL);
         try{
             DBM.dbOpen();
